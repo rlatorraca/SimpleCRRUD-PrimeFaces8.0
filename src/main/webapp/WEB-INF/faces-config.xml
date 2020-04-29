@@ -5,7 +5,7 @@
 	version="2.2">
 
 	<application>
-		<message-bundle>com.algaworks.erp.Messages</message-bundle>
+		<message-bundle>com.rlsp.erp.Messages</message-bundle>
 
 		<locale-config>
 			<default-locale>pt_BR</default-locale>

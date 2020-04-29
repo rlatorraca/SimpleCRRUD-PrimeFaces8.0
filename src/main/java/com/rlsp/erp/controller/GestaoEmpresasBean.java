@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.PrimeFaces;
 
 import com.rlsp.erp.model.Empresa;

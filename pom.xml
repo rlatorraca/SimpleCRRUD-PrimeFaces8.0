@@ -1,313 +1,148 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
-  
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.rlsp</groupId>
-  <artifactId>PedidoVendasPrimeFaces8</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  
-  <properties>
-    	<project.build.sourceEnconding>UTF-8</project.build.sourceEnconding>  	
-    	<itext.version>RELEASE</itext.version>
-  </properties>
-  
-  <dependencies>
-	  	<!-- Mojarra (implementacao do JSF 2.4 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.rlsp</groupId>
+	<artifactId>simple-CRRUD-PF8</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+
 		<dependency>
-		    <groupId>org.glassfish</groupId>
-		    <artifactId>javax.faces</artifactId>
-		    <version>2.4.0</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>4.1.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>8.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet-core</artifactId>
+			<version>3.1.4.Final</version>
+			<scope>provided</scope>
 		</dependency>
 		
-		<!-- OmniFaces is a utility library for JSF 2 that focusses on utilities that ease everyday tasks with the standard JSF API. -->
-		<!-- OmniFaces - Apr 04, 2020 -->
-	    <dependency>
+		<dependency>
     		<groupId>org.omnifaces</groupId>
     		<artifactId>omnifaces</artifactId>
     		<version>3.4.1</version>
 	    </dependency>
 		
-		<!-- Prime Faces (Components Libraries) -->
 		<dependency>
-		    <groupId>org.primefaces</groupId>
-		    <artifactId>primefaces</artifactId>
-		    <version>8.0</version>
-		</dependency>
-		
-		<!-- JavaServlet(TM) Specification -->
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>servlet-api</artifactId>
-		    <version>3.0-alpha-1</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-   			<groupId>javax.servlet</groupId>
-   			<artifactId>javax.servlet-api</artifactId>
-   			<version>3.1.0</version>
-   			<scope>provided</scope>
-		</dependency>
-		
-		<!-- CDI  -->
-		<dependency>
-		    <groupId>org.jboss.weld.servlet</groupId>
-		    <artifactId>weld-servlet-core</artifactId>
-		    <version>3.1.4.Final</version>
-		    <scope>provided</scope>
+	    	<groupId>org.jboss</groupId>
+	    	<artifactId>jandex</artifactId>	    
+	    	<version>2.0.1.Final</version>
 		</dependency>
 
-		<!-- Apache Log4j Api -->
 		<dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-api</artifactId>
-		    <version>2.13.1</version>
-		</dependency>
-		
-		<!-- Apache Log4j Core -->
-		<dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-core</artifactId>
-		    <version>2.13.1</version>
-		</dependency>
-		
-		<!-- Funciona junto com CommonsLog -->
-		<dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-jcl</artifactId>
-		    <version>2.13.1</version>
-		</dependency>
-		
-		<!-- Commons Logging (abstrai a implementação de logging) -->
-		<dependency>
-		    <groupId>commons-logging</groupId>
-		    <artifactId>commons-logging</artifactId>
-		    <version>1.2</version>
-		</dependency>
-		
-		<!-- Nucleo do Hibernate - Mar 31, 2020 -->
-		<dependency>
-    		<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-core</artifactId>
-    		<version>5.4.13.Final</version>
-    		<scope>compile</scope>
-		</dependency>
-		
-		<!-- C3PO - controla o pool de conexoes -->
-		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-c3p0</artifactId>
-		    <version>5.4.14.Final</version>
-		</dependency>
-		
-		<!-- Entity Manager JPA Implementation - Mar 31, 2020 -->
-		<dependency>
-    		<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-entitymanager</artifactId>
-    		<version>5.4.13.Final</version>
-    		<scope>compile</scope>
-		</dependency>
-		
-		<!-- JAVA MySQL Conector  -->
-		<dependency>
-	    	<groupId>mysql</groupId>
-	    	<artifactId>mysql-connector-java</artifactId>
-	    	<version>8.0.19</version>
-	    	<scope>compile</scope>
-		</dependency>
-		
-		<!-- Hibernate Validator + Bean Validation- Apr 2, 2020 -->
-		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.1.2.Final</version>
-		    <scope>compile</scope>
-		</dependency>
-		
-		<!-- Expression Language 3.0,  Dec 14, 2018-->
-		<dependency>
-    		<groupId>org.glassfish</groupId>
-    		<artifactId>javax.el</artifactId>
-    		<version>3.0.1-b11</version>
-		</dependency>
-		
-				
-		<!-- Commons-lang3 -= Classes Utilitarias em JAVA, Apr 04, 2020 -->
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.10</version>
-		</dependency>
-		
-		<!-- Simple-email -->
-		<!-- Abstração para envio de e-mails -->		
-	    <dependency>
-		    <groupId>com.outjected</groupId>
-		    <artifactId>simple-email</artifactId>
-		    <version>1.7</version>
-	    </dependency>    
-
-
-		<!-- Requerido para envio de e-mails  - Simples-email depende do javax.mail-->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.4.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		<!-- Apache Velocity - usado para template de emails (como o Freemarker ou ThymLeaf)  -->
+
 		<dependency>
-  			<groupId>org.apache.velocity</groupId>
-  			<artifactId>velocity-engine-core</artifactId>
-  			<version>2.2</version>
-		</dependency>
-		
-		<!-- Usado para formatacoes em geral do Apache Velocity -->
-		<dependency>
-			<groupId>org.apache.velocity.tools</groupId>
-		    <artifactId>velocity-tools-generic</artifactId>
-		    <version>3.0</version>
-		</dependency>
-		
-		<dependency>
-		     <groupId>org.apache.velocity.tools</groupId>
-		     <artifactId>velocity-tools-view</artifactId>
-		     <version>3.0</version>
-		</dependency>
-		
-		<dependency>
-		     <groupId>org.apache.velocity.tools</groupId>
-		     <artifactId>velocity-tools-view-jsp</artifactId>
-		      <version>3.0</version>
-		</dependency>
-		
-		<!-- Spring Security -->		
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
-		    <version>5.3.1.RELEASE</version>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.4.0</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-web</artifactId>
-		    <version>5.3.1.RELEASE</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-config</artifactId>
-		    <version>5.3.1.RELEASE</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.6.Final</version>
+			<scope>compile</scope>
 		</dependency>
-		
-		<!-- Joda-Time provides a quality replacement for the Java date and time classes. -->
+
 		<dependency>
-  			<groupId>joda-time</groupId>
-  			<artifactId>joda-time</artifactId>
-  			<version>2.10.5</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.4.14.Final</version>
+			<scope>compile</scope>
 		</dependency>
-		
-		<!-- Jasper Report -->
-		<!-- https://community.jaspersoft.com/project/jaspersoft-studio/releases -->
+
 		<dependency>
-		    <groupId>net.sf.jasperreports</groupId>
-		    <artifactId>jasperreports</artifactId>
-		    <version>6.12.2</version>
-  		</dependency>
-		
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.20</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<dependency>
-		    <groupId>net.sf.jasperreports</groupId>
-		    <artifactId>jasperreports-fonts</artifactId>
-		    <version>6.12.2</version>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.10</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xpp3</groupId>
+					<artifactId>xpp3_min</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xmlpull</groupId>
+					<artifactId>xmlpull</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-    
-	    <dependency>
-		  <groupId>com.lowagie</groupId>
-		  <artifactId>itext</artifactId>
-		  <version>2.1.7</version>
-		  <scope>compile</scope>
-		</dependency>
-		
-		<!-- Para gerar arquivo XLS (Excel)  -->
-		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>4.1.2</version>
-		</dependency>
-		
-		<!-- Para gerar arquivo PDF (PDF)  -->
-		<dependency>
-    		<groupId>com.itextpdf</groupId>
-    		<artifactId>itextpdf</artifactId>
-    		<version>5.5.13.1</version>
-		</dependency>
-		
-		<!-- Themes (layouts) - PrimeFaces -->
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>all-themes</artifactId>
-			<version>1.0.10</version>
-		</dependency>
-  	
-  </dependencies>
-  
-  <repositories>
-  		<repository>
-            <id>prime-repo</id>
-            <name>PrimeFaces Maven Repository</name>
-            <url>http://repository.primefaces.org</url>
-            <layout>default</layout>
-        </repository>
-  		
-  		<repository>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>13</source>
+					<target>13</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+
+		<repository>
 			<id>clearfly-releases</id>
 			<name>Clearfly Releases Maven Repository</name>
 			<url>https://mvn.clearfly.net/artifactory/libs-release</url>
 			<layout>default</layout>
 		</repository>
-		
+
 		<repository>
-		    <id>jasper-3rd-party</id>
-		    <name>Jasper3rdParty</name>
-		    <url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
-  		</repository>
+			<id>jasper-3rd-party</id>
+			<name>Jasper3rdParty</name>
+			<url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
+		</repository>
 
 		<repository>
 			<id>JBoss repository</id>
 			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 
-  </repositories>
-  
-  <build>
-  	<finalName>PedidoVenda-PrimeFaces8</finalName>
-  	<plugins>
-  		<plugin>
-  			  <groupId>org.apache.maven.plugins</groupId>
-          	  <artifactId>maven-war-plugin</artifactId>
-          	  <version>3.2.3</version>
-          	  <configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-			  </configuration>
-		</plugin>
-		
-		<plugin>	  
-			<groupId>org.apache.maven.plugins</groupId>
-        	<artifactId>maven-compiler-plugin</artifactId>	
-        	<version>3.8.1</version>
-        		<configuration>
-          			<source>13</source>
-          			<target>13</target>          			
-        		</configuration>      	   	
-  		</plugin>
-  	</plugins>
-  </build>
-  
-  
-  
+	</repositories>
 </project>
